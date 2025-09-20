@@ -1,0 +1,102 @@
+Instructions
+Information on what to do 
+
+Post-Stay Drip Campaign - Test 
+We’re a virtual short-term rental (STR) management company specializing in maximizing occupancy and driving repeat bookings. Beyond just filling calendars, our approach blends data-driven pricing strategies, personalized guest communication, and streamlined digital operations. A core part of our strategy is re-engaging past guests through well-timed, on-brand drip campaigns that nurture loyalty and encourage return stays. 
+Your task is to create a workflow with next summary:
+1.	Process guest JSON → assign segment, determine outreach, calculate send dates.
+2.	Fill templates → apply tone, offer_text, alt_offer_text, promo_code, booking_url.
+3.	Export three JSONL files (contacts.json, custom_fields.json, actions.json).
+4.	Simple and lightweight data preview in Web app
+Data Provided
+For this task, you will use the seed dataset you will find >> here << (includes segments): 
+•	str_past_guests_seed_with_segments.json - seed json data for properties and guests
+•	segmentation_rules.json — deterministic rule-based segments
+•	tones.json — tone boilerplates (friendly, professional)
+•	outreach_templates.json - fixed templates for 5 outreaches (email subject/preview/body + SMS)
+•	offer_texts.json - fixed text offers based on segments for placeholder field in outreach templates
+•	alt_offer_texts.json - fixed alternative text offers based on segments for placeholder field in outreach templates
+•	promo_codes.json - fixed promo codes based on segments for placeholder field in outreach templates
+Core Requirements
+
+Based on provided data, create next workflow:
+1.	Generate Outreach & Cadence
+Trigger outreach from last_check_out. Default outreach points:
+	Outreach1: T+3 days: Thank-you + review request
+	Outreach2: T+14 days: Value content + soft CTA
+	Outreach3: T+30 days: Incentive (weekday perk or % off), time-boxed
+	Outreach4: T+60 days: Reminder with alternative perk
+	Outreach5: T+110 days: Last chance before seasonal blackout
+Outreach (email & sms) should be created based on available consent fields.
+2.	Segmentation (rules-only)
+This is about assigning each guest into exactly one segment (bucket) using only the inputs listed. That way, you can personalize your outreach without AI guesses - purely based on rules from segmentation_rules.json.
+Inputs you have:
+•	recency_days → how long since their last stay.
+•	lifetime_spend → total money they’ve spent with you.
+•	avg_review_score → their average review rating.
+•	last_property → where they last stayed.
+•	guest_communications.sentiment → flag if there were problems.
+
+Outputs:
+•	Based on inputs, generate one segment per guest based on data provided in segmentation_rules.json
+•	Use calculated rule-based output segment for guest, to validate derived.segment value.
+•	Use the output segment to pick tone.
+•	Use the output segment and outreach point to pick promo code from promo_codes.json
+•	Use the output segment to pick offer_text from alt_offer_texts.json.
+•	Use the output segment to pick alt_offer_text from offer_texts.json.
+•	Use last_property to generate booking_url like this:
+https://yourstrplatform.com/bookings/{property_slug}?guest_id={guest_id}&promo={promo_code}
+     Where property_slug is generated from: "last_property": "WhiteSmoke Bungalow #14"
+3.	Templates
+o	Use fixed templates from outreach_templates.json. 
+o	Fill placeholders for picked outreach template (if placeholder exist for that outreach template): 
+	{first_name}
+	{last_property}
+	{city}
+	{booking_url}
+	{offer_text}
+	{alt_offer_text}
+	{promo_code}
+
+4.	Lightweight Web UI (Next.js with tailwind) 
+Even though your workflow is offline, it’s useful to have a simple interface to:
+•	View the guests in your drip campaign.
+•	Check which segment each guest is in.
+•	Preview upcoming emails or SMS before exporting to CRM.
+•	Apply simple filters (like “only show guests who stayed in May” or “only this property”).
+5. Mock CRM Integration
+Files to Export
+a) contacts.json
+•	Contains one object per guest, representing a CRM contact.
+•	Each guest’s core info: guest_id, first_name, last_name, email, phone.
+•	Example (JSONL format — one object per line):
+
+
+{"guest_id": "g_2076", "first_name": "Jennifer", "last_name": "Henry", "email": "jennifer.henry@example.com", "phone": "+16215279487"}
+
+________________________________________
+b) custom_fields.json
+•	Stores segment, drip stage, next outreach date, etc.
+•	Each guest has a single object for CRM to track their current workflow state.
+
+Example:
+{"guest_id": "g_2076", "segment": "AtRisk", "current_outreach": "Outreach2", "next_outreach": "Outreach3", "planned_send_date": "2025-09-21"}
+________________________________________
+c) actions.json
+•	Represents enrollments or scheduled actions for each outreach.
+•	Includes dedupeKey so each action is idempotent (can’t be double-enrolled).
+Example:
+•	{"guest_id": "g_2076", "outreach": "Outreach3", "send_date": "2025-09-21", "channel": "email", "template_id": "Outreach3", "dedupeKey": "g_2076-Outreach3"}
+•	dedupeKey = unique combination of guest + outreach→ ensures no duplicates if workflow runs multiple times.
+•	Can also include filled placeholders (promo_code, offer_text, alt_offer_text, booking_url) for CRM preview.
+Tabbed Preview
+Even offline, workflow can export three JSONL files (contacts.jsonl, custom_fields.jsonl, actions.jsonl). You can preview the exported data in a page with three tabs with next tables:
+•	Tab 1: Contacts → table of contacts.json
+•	Tab 2: Custom Fields → table of custom_fields.json
+•	Tab 3: Actions → table of actions.json 
+Each table shows all fields, preview of email content, and planned send dates.
+📦 DELIVERABLES
+•	Accessible/PublicGitHub repo with all code.
+•	README.md → setup & run instructions (clear prerequisites, environment variables, steps, and expected outputs).
+•	Data files → JSON(s) + CSV(s) from tasks 2, 3, 4, 5.
+
