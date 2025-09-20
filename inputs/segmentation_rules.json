@@ -1,0 +1,41 @@
+{
+  "rules": [
+    {
+      "name": "Promoter_VIP",
+      "conditions": {
+        "lifetime_spend": "> 2000",
+        "avg_review_score": ">= 4.8",
+        "recency_days": "<= 180"
+      }
+    },
+    {
+      "name": "Promoter",
+      "conditions": {
+        "avg_review_score": ">= 4.5",
+        "recency_days": "<= 365"
+      }
+    },
+    {
+      "name": "HighValue_Recent",
+      "conditions": {
+        "lifetime_spend": "> 1000",
+        "recency_days": "<= 90"
+      }
+    },
+    {
+	  "name": "AtRisk",
+	  "conditions": {
+		"or": [
+		  { "recency_days": "> 365" },
+		  { "guest_communications.sentiment": "negative" }
+		]
+	  }
+	},
+    {
+      "name": "Neutral",
+      "conditions": {
+        "default": true
+      }
+    }
+  ]
+}

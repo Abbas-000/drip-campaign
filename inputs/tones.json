@@ -1,0 +1,22 @@
+{
+  "Promoter_VIP": {
+    "email": "friendly",
+    "sms": "warm"
+  },
+  "Promoter": {
+    "email": "friendly",
+    "sms": "neutral"
+  },
+  "HighValue_Recent": {
+    "email": "professional",
+    "sms": "professional"
+  },
+  "AtRisk": {
+    "email": "direct",
+    "sms": "urgent"
+  },
+  "Neutral": {
+    "email": "neutral",
+    "sms": "neutral"
+  }
+}

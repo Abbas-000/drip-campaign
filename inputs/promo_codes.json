@@ -1,0 +1,29 @@
+{
+  "promo_codes": {
+    "Promoter_VIP": {
+      "Outreach3": "VIP10",
+      "Outreach4": "VIP15",
+      "Outreach5": "VIP20"
+    },
+    "Promoter": {
+      "Outreach3": "PROMO10",
+      "Outreach4": "PROMO15",
+      "Outreach5": "PROMO20"
+    },
+    "HighValue_Recent": {
+      "Outreach3": "HV15",
+      "Outreach4": "HV20",
+      "Outreach5": "HV25"
+    },
+    "AtRisk": {
+      "Outreach3": "RISK10",
+      "Outreach4": "RISK15",
+      "Outreach5": "RISK20"
+    },
+    "Neutral": {
+      "Outreach3": "WELCOME5",
+      "Outreach4": "WELCOME10",
+      "Outreach5": "WELCOME15"
+    }
+  }
+}

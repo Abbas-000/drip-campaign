@@ -1,0 +1,252 @@
+{
+  "Outreach1": {
+    "friendly": {
+      "email": {
+        "subject": "Thanks a bunch, {first_name}! 🌟",
+        "body": "Hey {first_name}, thanks for staying at {last_property}! 💛 We’d *love* your feedback — it helps us and other guests.",
+        "preview": "We’d love your feedback on your stay at {last_property}."
+      },
+      "sms": "Thx {first_name}! Hope {last_property} felt like home 🏡. Quick review? {booking_url}"
+    },
+    "warm": {
+      "email": {
+        "subject": "We hope you enjoyed {last_property}, {first_name} ✨",
+        "body": "Hi {first_name}, we’re so glad you chose {last_property}. We’d really appreciate hearing how your trip went.",
+        "preview": "Share your experience from your recent stay at {last_property}."
+      },
+      "sms": "Hi {first_name}, we loved having you at {last_property}. Could you share your thoughts? {booking_url}"
+    },
+    "neutral": {
+      "email": {
+        "subject": "Thank you {first_name} — how was your stay?",
+        "body": "Hi {first_name}, thank you for staying with us at {last_property}. We’d appreciate your review to help future guests.",
+        "preview": "We’d love your feedback from your recent stay at {last_property}."
+      },
+      "sms": "Thanks {first_name}! Hope you enjoyed {last_property}. Review? {booking_url}"
+    },
+    "professional": {
+      "email": {
+        "subject": "Feedback request for your recent stay at {last_property}",
+        "body": "Dear {first_name}, thank you for staying at {last_property}. Your feedback is invaluable and helps us maintain high standards.",
+        "preview": "Please share your experience from your recent stay."
+      },
+      "sms": "Dear {first_name}, please share a quick review of {last_property}: {booking_url}"
+    },
+    "direct": {
+      "email": {
+        "subject": "Review {last_property} now",
+        "body": "{first_name}, your feedback matters. Click below to review your stay at {last_property}.",
+        "preview": "Review your recent stay now."
+      },
+      "sms": "Review {last_property} now: {booking_url}"
+    },
+    "urgent": {
+      "email": {
+        "subject": "{first_name}, quick favor before we close your booking ⚡",
+        "body": "Hi {first_name}, we’re wrapping up your stay at {last_property}. Could you drop a quick review today?",
+        "preview": "Quick review needed for your recent stay at {last_property}."
+      },
+      "sms": "{first_name}, last chance to review {last_property}! {booking_url}"
+    }
+  },
+  "Outreach2": {
+    "friendly": {
+      "email": {
+        "subject": "{first_name}, {city} has surprises for you 🎉",
+        "body": "Hey {first_name}, next time you’re in {city}, don’t miss these cafes and hidden gems. We handpicked them for you!",
+        "preview": "Discover {city}'s latest spots for your next trip."
+      },
+      "sms": "Hey {first_name}, {city} is buzzing! Check these spots 👉 {booking_url}"
+    },
+    "warm": {
+      "email": {
+        "subject": "Discover what’s new in {city}, {first_name} ✨",
+        "body": "Hi {first_name}, thinking of your next trip? We’ve gathered cozy spots, fun events, and hidden treasures in {city}.",
+        "preview": "Here’s our curated list of new things to do in {city}."
+      },
+      "sms": "Hi {first_name}, {city} is waiting with new gems. Explore: {booking_url}"
+    },
+    "neutral": {
+      "email": {
+        "subject": "What’s new in {city}? ✨",
+        "body": "Hi {first_name}, here are our favorite new picks in {city} — cafes, events, and local highlights.",
+        "preview": "Check out what’s new in {city} for your next trip."
+      },
+      "sms": "Hi {first_name}, {city} is waiting! See what’s new: {booking_url}"
+    },
+    "professional": {
+      "email": {
+        "subject": "Latest recommendations in {city}",
+        "body": "Dear {first_name}, for your next visit to {city}, here are curated recommendations — dining, events, and local attractions.",
+        "preview": "Explore our professional guide for {city}."
+      },
+      "sms": "Dear {first_name}, explore curated {city} picks here: {booking_url}"
+    },
+    "direct": {
+      "email": {
+        "subject": "{city} updates — see now",
+        "body": "{first_name}, new things to do in {city}. Don’t miss them.",
+        "preview": "Quick update on {city} for you."
+      },
+      "sms": "New {city} highlights: {booking_url}"
+    },
+    "urgent": {
+      "email": {
+        "subject": "{first_name}, don’t miss this week in {city}! ⏳",
+        "body": "Hi {first_name}, {city} has hot spots and events happening now. Act fast before they’re gone!",
+        "preview": "Time-sensitive updates for {city}."
+      },
+      "sms": "Hurry! {city} has new events. See here: {booking_url}"
+    }
+  },
+  "Outreach3": {
+    "friendly": {
+      "email": {
+        "subject": "{first_name}, a little gift for you 🎁",
+        "body": "Hey {first_name}, we’d *love* to see you back at {last_property}. Book by {date} and enjoy {offer_text}!",
+        "preview": "Special offer just for you!"
+      },
+      "sms": "Hey {first_name}, special {offer_text} at {last_property}! Use {promo_code}"
+    },
+    "warm": {
+      "email": {
+        "subject": "Special thank-you offer, {first_name} ✨",
+        "body": "Hi {first_name}, we’d love to welcome you back. Reserve {last_property} by {date} and enjoy {offer_text}.",
+        "preview": "Here’s a special perk for your next stay."
+      },
+      "sms": "Hi {first_name}, enjoy {offer_text} at {last_property}. Code: {promo_code}"
+    },
+    "neutral": {
+      "email": {
+        "subject": "Exclusive perk just for you — book by {date}!",
+        "body": "Hi {first_name}, book {last_property} by {date} and enjoy {offer_text}. Use promo code {promo_code}.",
+        "preview": "Don’t miss this exclusive offer!"
+      },
+      "sms": "{first_name}, don’t miss {offer_text} at {last_property}. Code: {promo_code}"
+    },
+    "professional": {
+      "email": {
+        "subject": "Special booking incentive — valid until {date}",
+        "body": "Dear {first_name}, we’re pleased to offer {offer_text} if you reserve {last_property} by {date}. Promo code: {promo_code}.",
+        "preview": "Professional offer for your next visit."
+      },
+      "sms": "Dear {first_name}, redeem {offer_text} with code {promo_code}: {booking_url}"
+    },
+    "direct": {
+      "email": {
+        "subject": "{offer_text} — book by {date}",
+        "body": "{first_name}, secure {last_property} now. Use {promo_code} by {date} for {offer_text}.",
+        "preview": "Act now for {offer_text}!"
+      },
+      "sms": "Book {last_property} now — {offer_text}. Code {promo_code}"
+    },
+    "urgent": {
+      "email": {
+        "subject": "Hurry {first_name}! {offer_text} ends {date} ⚡",
+        "body": "Hi {first_name}, time is running out! Book {last_property} by {date} with code {promo_code} before the offer expires.",
+        "preview": "Limited time offer for {last_property}!"
+      },
+      "sms": "LAST CALL {first_name}! {offer_text} at {last_property}. Code {promo_code}"
+    }
+  },
+  "Outreach4": {
+    "friendly": {
+      "email": {
+        "subject": "A sweet little extra for you in {city}, {first_name} 🍪",
+        "body": "Hey {first_name}, still daydreaming about {city}? We’ve got a treat — {alt_offer_text} if you book before {date}.",
+        "preview": "Another reason to return to {city}!"
+      },
+      "sms": "Hey {first_name}, here’s {alt_offer_text} at {last_property}. Book soon 👉 {booking_url}"
+    },
+    "warm": {
+      "email": {
+        "subject": "Another reason to come back to {city}, {first_name} ✨",
+        "body": "Hi {first_name}, we noticed you haven’t rebooked. Here’s {alt_offer_text}, valid until {date}.",
+        "preview": "Win-back offer for your next stay."
+      },
+      "sms": "Hi {first_name}, enjoy {alt_offer_text} at {last_property}. Book now: {booking_url}"
+    },
+    "neutral": {
+      "email": {
+        "subject": "Still thinking about {city}? Here’s another treat 🎁",
+        "body": "Hi {first_name}, enjoy {alt_offer_text} when you return. Valid until {date}.",
+        "preview": "Second chance offer for your stay."
+      },
+      "sms": "Last chance! {alt_offer_text} at {last_property}. Book: {booking_url}"
+    },
+    "professional": {
+      "email": {
+        "subject": "Additional incentive for your next stay in {city}",
+        "body": "Dear {first_name}, we’d like to extend {alt_offer_text} if you reserve by {date}. We hope to welcome you again.",
+        "preview": "Professional win-back incentive."
+      },
+      "sms": "Dear {first_name}, redeem {alt_offer_text} at {last_property}: {booking_url}"
+    },
+    "direct": {
+      "email": {
+        "subject": "{alt_offer_text} — valid until {date}",
+        "body": "{first_name}, book {last_property} now. {alt_offer_text} expires {date}.",
+        "preview": "Act now for your alternative offer."
+      },
+      "sms": "{alt_offer_text} at {last_property}. Book: {booking_url}"
+    },
+    "urgent": {
+      "email": {
+        "subject": "Act now {first_name} — {alt_offer_text} expires {date}! ⏳",
+        "body": "Hi {first_name}, don’t miss this! {alt_offer_text} ends {date}. Reserve {last_property} now.",
+        "preview": "Time-sensitive win-back offer."
+      },
+      "sms": "URGENT ⚠️ {alt_offer_text} ends {date}! Book {last_property}: {booking_url}"
+    }
+  },
+  "Outreach5": {
+    "friendly": {
+      "email": {
+        "subject": "Don’t miss out, {first_name} 🌞",
+        "body": "Hey {first_name}, your favorite {last_property} is booking fast! Lock it in before blackout dates.",
+        "preview": "Final friendly reminder for your next stay."
+      },
+      "sms": "Hey {first_name}, last chance before {last_property} sells out! {booking_url}"
+    },
+    "warm": {
+      "email": {
+        "subject": "Secure {last_property} before peak season, {first_name} ✨",
+        "body": "Hi {first_name}, this is your last chance to rebook {last_property} before peak blackout dates.",
+        "preview": "Gentle reminder to reserve your spot."
+      },
+      "sms": "Hi {first_name}, book {last_property} today before blackout dates. {booking_url}"
+    },
+    "neutral": {
+      "email": {
+        "subject": "Final call — book before blackout dates!",
+        "body": "Hi {first_name}, this is your last chance to secure {last_property} before seasonal blackout dates.",
+        "preview": "Final neutral reminder for your next stay."
+      },
+      "sms": "Final call {first_name}! Book {last_property} before blackout. {booking_url}"
+    },
+    "professional": {
+      "email": {
+        "subject": "Reservation deadline approaching for {last_property}",
+        "body": "Dear {first_name}, please reserve {last_property} before seasonal blackout dates restrict availability.",
+        "preview": "Professional reminder to secure your reservation."
+      },
+      "sms": "Dear {first_name}, secure {last_property} before blackout: {booking_url}"
+    },
+    "direct": {
+      "email": {
+        "subject": "Book {last_property} now — blackout soon",
+        "body": "{first_name}, last chance. Secure {last_property} before blackout dates.",
+        "preview": "Direct alert to book immediately."
+      },
+      "sms": "Book {last_property} now before blackout: {booking_url}"
+    },
+    "urgent": {
+      "email": {
+        "subject": "LAST CALL {first_name}! Blackout starts soon ⏳",
+        "body": "Hi {first_name}, act now! Blackout dates are almost here. Secure {last_property} today.",
+        "preview": "Urgent final call for your next stay."
+      },
+      "sms": "URGENT ⚠️ Book {last_property} now — blackout imminent! {booking_url}"
+    }
+  }
+}
