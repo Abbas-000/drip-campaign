@@ -8,11 +8,14 @@ export interface Property {
 }
 
 export interface GuestCommunication {
-  message_id: string;
-  sent_at: string;
   channel: 'email' | 'sms';
   sentiment: 'positive' | 'neutral' | 'negative';
   content: string;
+  timestamp: string;
+  stage: string;
+  text: string;
+  sentiment_score: number;
+  issue_tag: string;
 }
 
 export interface Guest {
@@ -21,6 +24,8 @@ export interface Guest {
   last_name: string;
   email: string;
   phone: string;
+  reservation_date: string;
+  last_check_in: string;
   last_check_out: string;
   last_property: string;
   lifetime_spend: number;
@@ -29,8 +34,11 @@ export interface Guest {
   consent_sms: boolean;
   guest_communications: GuestCommunication[];
   derived: {
-    segment?: string;
-    recency_days?: number;
+    segment: string;
+    recency_days: number;
+    lead_time_days: number;
+    lead_time_bucket: string;
+    preferred_theme: string;
   };
 }
 
@@ -103,15 +111,13 @@ export interface CustomField {
   planned_send_date: string;
   consent_email: boolean;
   consent_sms: boolean;
-  validation_errors?: string[];
-  notes?: string;
 }
 
 export interface Action {
   guest_id: string;
   outreach: string;
   send_date: string;
-  channel: 'email' | 'sms';
+  channel: 'email' | 'sms' | 'email + sms';
   template_id: string;
   dedupeKey: string;
   subject?: string;

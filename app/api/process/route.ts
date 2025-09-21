@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { SegmentationEngine } from '@/lib/segmentation';
 import { DripCampaignWorkflow } from '@/lib/workflow';
-import { 
-  SeedData, 
-  SegmentationRules, 
+import {
   Tones, 
   OutreachTemplates, 
   OfferTexts, 
@@ -37,12 +34,8 @@ export async function POST(request: NextRequest) {
       import('@/public/jsons/promo_codes.json')
     ]);
 
-    // Initialize segmentation engine
-    const engine = new SegmentationEngine(segmentationRules.rules);
-
     // Initialize workflow
     const workflow = new DripCampaignWorkflow(
-      engine,
       seedData.properties,
       tones.default as Tones,
       templates.default as OutreachTemplates,

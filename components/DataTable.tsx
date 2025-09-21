@@ -286,7 +286,7 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                  action.channel === 'email' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'
+                  action.channel === 'email + sms' ? 'bg-purple-100 text-purple-800' : action.channel === 'email' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'
                 }`}>
                   {action.channel.toUpperCase()}
                 </span>
@@ -295,7 +295,7 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
                 {new Date(action.send_date).toLocaleDateString()}
               </td>
               <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
-                {action.subject || action.body}
+                {action.subject || action.body || action.sms_body}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {action.promo_code || '-'}
