@@ -5,7 +5,9 @@ import {
   OutreachTemplates, 
   OfferTexts, 
   AltOfferTexts, 
-  PromoCodes 
+  PromoCodes,
+  Property,
+  Season
 } from '@/types';
 
 export async function POST(request: NextRequest) {
@@ -20,6 +22,7 @@ export async function POST(request: NextRequest) {
     // Load configuration files
     const [
       segmentationRules,
+      filters,
       tones,
       templates,
       offerTexts,
@@ -27,6 +30,7 @@ export async function POST(request: NextRequest) {
       promoCodes
     ] = await Promise.all([
       import('@/public/jsons/segmentation_rules.json'),
+      import('@/public/jsons/str_past_guests_seed_with_segments.json'),
       import('@/public/jsons/tones.json'),
       import('@/public/jsons/outreach_templates.json'),
       import('@/public/jsons/offer_texts.json'),
@@ -50,6 +54,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       data: processedData,
+      properties: filters.default.properties as Property[],
+      months: filters.default.seasonality as Season[],
       stats: {
         totalGuests: seedData.guests.length,
         totalContacts: processedData.contacts.length,

@@ -7,6 +7,12 @@ export interface Property {
   timezone: string;
 }
 
+export interface Season {
+  month: number;
+  label: 'Low' | 'Shoulder' | 'Peak';
+  notes: string;
+}
+
 export interface GuestCommunication {
   channel: 'email' | 'sms';
   sentiment: 'positive' | 'neutral' | 'negative';
@@ -101,6 +107,7 @@ export interface Contact {
   last_name: string;
   email: string;
   phone: string;
+  segment: string;
 }
 
 export interface CustomField {
@@ -130,6 +137,18 @@ export interface Action {
 }
 
 export interface ProcessedData {
+  data: MainProcessedData;
+  properties: Property[];
+  months: Season[];
+  stats: {
+    totalGuests: number;
+    totalCustomFields: number;
+    totalContacts: number;
+    totalActions: number;
+  };
+}
+
+export interface MainProcessedData {
   contacts: Contact[];
   customFields: CustomField[];
   actions: Action[];
@@ -139,8 +158,8 @@ export interface FilterOptions {
   lastProperty?: string;
   segment?: string;
   recencyRange?: {
-    min: number;
-    max: number;
+    min?: number;
+    max?: number;
   };
   consentEmail?: boolean;
   consentSms?: boolean;

@@ -45,7 +45,7 @@ export default function Home() {
       }
 
       const result = await processResponse.json();
-      setProcessedData(result.data);
+      setProcessedData(result);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
@@ -62,7 +62,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ data: processedData, format }),
+        body: JSON.stringify({ data: processedData.data, format }),
       });
 
       if (!response.ok) {
@@ -107,7 +107,7 @@ export default function Home() {
         }, 1000);
       } else {
         // Download as single JSON file
-        const blob = new Blob([JSON.stringify(processedData, null, 2)], { type: 'application/json' });
+        const blob = new Blob([JSON.stringify(processedData.data, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
@@ -151,8 +151,8 @@ export default function Home() {
         onExport={handleExport}
         onReload={loadAndProcessData}
         stats={processedData ? {
-          totalGuests: processedData.contacts.length,
-          totalActions: processedData.actions.length
+          totalGuests: processedData.stats.totalGuests,
+          totalActions: processedData.stats.totalActions
         } : null}
       />
       
@@ -168,9 +168,9 @@ export default function Home() {
             <div className="border-b border-gray-200">
               <nav className="-mb-px flex space-x-8 px-6">
                 {[
-                  { id: 'contacts', label: 'Contacts', count: processedData?.contacts.length || 0 },
-                  { id: 'customFields', label: 'Custom Fields', count: processedData?.customFields.length || 0 },
-                  { id: 'actions', label: 'Actions', count: processedData?.actions.length || 0 }
+                  { id: 'contacts', label: 'Contacts', count: processedData?.stats.totalContacts || 0 },
+                  { id: 'customFields', label: 'Custom Fields', count: processedData?.stats.totalCustomFields || 0 },
+                  { id: 'actions', label: 'Actions', count: processedData?.stats.totalActions || 0 }
                 ].map((tab) => (
                   <button
                     key={tab.id}
@@ -190,7 +190,7 @@ export default function Home() {
             <div className="p-6">
               {processedData && (
                 <DataTable
-                  data={processedData}
+                  data={processedData.data}
                   activeTab={activeTab}
                   filters={filters}
                 />

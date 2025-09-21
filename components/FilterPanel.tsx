@@ -12,10 +12,25 @@ interface FilterPanelProps {
 export function FilterPanel({ filters, onFiltersChange, data }: FilterPanelProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const months: { [key: string]: string } = {
+    '1': 'January',
+    '2': 'February',
+    '3': 'March',
+    '4': 'April',
+    '5': 'May',
+    '6': 'June',
+    '7': 'July',
+    '8': 'August',
+    '9': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December'
+  };
+
   // Get unique values for filter options
-  const uniqueProperties = data ? [...new Set(data.contacts.map(() => 'All Properties'))] : [];
-  const uniqueSegments = data ? [...new Set(data.customFields.map(f => f.segment))] : [];
-  const uniqueMonths = data ? [...new Set(data.contacts.map(() => 'All Months'))] : [];
+  const uniqueProperties = data ? [...new Set(data.properties.map(p => p.property_name))] : [];
+  const uniqueSegments = data ? [...new Set(data.data.customFields.map(f => f.segment))] : [];
+  const uniqueMonths = data ? [...new Set(data.months.map((m) => months[String(m.month)]))] : [];
 
   const updateFilter = (key: keyof FilterOptions, value: any) => {
     onFiltersChange({

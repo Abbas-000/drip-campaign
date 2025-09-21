@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { ProcessedData, FilterOptions, Contact, CustomField, Action } from '@/types';
+import { FilterOptions, Contact, CustomField, Action, MainProcessedData } from '@/types';
 
 interface DataTableProps {
-  data: ProcessedData;
+  data: MainProcessedData;
   activeTab: 'contacts' | 'customFields' | 'actions';
   filters: FilterOptions;
 }

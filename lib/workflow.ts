@@ -3,13 +3,13 @@ import {
   Property, 
   Contact, 
   CustomField, 
-  Action, 
-  ProcessedData,
+  Action,
   Tones,
   OutreachTemplates,
   OfferTexts,
   AltOfferTexts,
-  PromoCodes
+  PromoCodes,
+  MainProcessedData
 } from '@/types';
 import { generateBookingUrl } from './utils';
 
@@ -40,7 +40,7 @@ export class DripCampaignWorkflow {
   /**
    * Processes all guests and generates the three output files
    */
-  processGuests(guests: Guest[]): ProcessedData {
+  processGuests(guests: Guest[]): MainProcessedData {
     const contacts: Contact[] = [];
     const customFields: CustomField[] = [];
     const actions: Action[] = [];
@@ -53,7 +53,8 @@ export class DripCampaignWorkflow {
         first_name: guest.first_name,
         last_name: guest.last_name,
         email: guest.email,
-        phone: guest.phone
+        phone: guest.phone,
+        segment: guest.derived.segment,
       };
       contacts.push(contact);
 
