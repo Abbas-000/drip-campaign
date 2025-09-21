@@ -108,6 +108,11 @@ export interface Contact {
   email: string;
   phone: string;
   segment: string;
+  consent_email: boolean;
+  consent_sms: boolean;
+  last_property: string;
+  last_check_in: string;
+  recency_days: number;
 }
 
 export interface CustomField {
@@ -118,6 +123,9 @@ export interface CustomField {
   planned_send_date: string;
   consent_email: boolean;
   consent_sms: boolean;
+  last_property: string;
+  last_check_in: string;
+  recency_days: number;
 }
 
 export interface Action {
@@ -134,6 +142,12 @@ export interface Action {
   offer_text?: string;
   alt_offer_text?: string;
   booking_url: string;
+  segment: string;
+  consent_email: boolean;
+  consent_sms: boolean;
+  last_property: string;
+  last_check_in: string;
+  recency_days: number;
 }
 
 export interface ProcessedData {

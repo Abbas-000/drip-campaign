@@ -55,6 +55,11 @@ export class DripCampaignWorkflow {
         email: guest.email,
         phone: guest.phone,
         segment: guest.derived.segment,
+        consent_email: guest.consent_email,
+        consent_sms: guest.consent_sms,
+        last_property: guest.last_property,
+        last_check_in: guest.last_check_in,
+        recency_days: guest.derived.recency_days
       };
       contacts.push(contact);
 
@@ -97,7 +102,10 @@ export class DripCampaignWorkflow {
       next_outreach: nextOutreach,
       planned_send_date: plannedSendDate,
       consent_email: guest.consent_email,
-      consent_sms: guest.consent_sms
+      consent_sms: guest.consent_sms,
+      last_property: guest.last_property,
+      last_check_in: guest.last_check_in,
+      recency_days: guest.derived.recency_days
     };
   }
 
@@ -219,7 +227,13 @@ export class DripCampaignWorkflow {
       promo_code: promoCode,
       offer_text: offerText,
       alt_offer_text: altOfferText,
-      booking_url: bookingUrl
+      booking_url: bookingUrl,
+      segment: guest.derived.segment,
+      consent_email: guest.consent_email,
+      consent_sms: guest.consent_sms,
+      last_property: guest.last_property,
+      last_check_in: guest.last_check_in,
+      recency_days: guest.derived.recency_days
     };
   }
 

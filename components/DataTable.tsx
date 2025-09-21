@@ -31,35 +31,36 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
     }
 
     // Apply filters
-    if (filters.segment && activeTab !== 'contacts') {
+    if (filters.segment) {
       filtered = filtered.filter((item: any) => item.segment === filters.segment);
     }
 
     if (filters.consentEmail !== undefined) {
-      if (activeTab === 'contacts') {
-        // For contacts, we need to check custom fields for consent
-        const guestIds = data.customFields
-          .filter(cf => cf.consent_email === filters.consentEmail)
-          .map(cf => cf.guest_id);
-        filtered = filtered.filter((item: any) => guestIds.includes(item.guest_id));
-      } else if (activeTab === 'customFields') {
-        filtered = filtered.filter((item: any) => item.consent_email === filters.consentEmail);
-      } else if (activeTab === 'actions') {
-        filtered = filtered.filter((item: any) => item.channel === 'email');
-      }
+      filtered = filtered.filter((item: any) => item.consent_email === filters.consentEmail);
     }
 
     if (filters.consentSms !== undefined) {
-      if (activeTab === 'contacts') {
-        const guestIds = data.customFields
-          .filter(cf => cf.consent_sms === filters.consentSms)
-          .map(cf => cf.guest_id);
-        filtered = filtered.filter((item: any) => guestIds.includes(item.guest_id));
-      } else if (activeTab === 'customFields') {
-        filtered = filtered.filter((item: any) => item.consent_sms === filters.consentSms);
-      } else if (activeTab === 'actions') {
-        filtered = filtered.filter((item: any) => item.channel === 'sms');
+      filtered = filtered.filter((item: any) => item.consent_sms === filters.consentSms);
+    }
+
+    if (filters.lastProperty) {
+      filtered = filtered.filter((item: any) => item.last_property === filters.lastProperty);
+    }
+
+    if (filters.recencyRange) {
+      if (filters.recencyRange.min !== undefined) {
+        filtered = filtered.filter((item: any) => item.recency_days >= filters.recencyRange!.min!);
       }
+      if (filters.recencyRange.max !== undefined) {
+        filtered = filtered.filter((item: any) => item.recency_days <= filters.recencyRange!.max!);
+      }
+    }
+
+    if (filters.monthOfStay) {
+      filtered = filtered.filter((item: any) => {
+        const month = new Date(item.last_check_in).toLocaleString('default', { month: 'long' });
+        return month === filters.monthOfStay;
+      });
     }
 
     return filtered;
