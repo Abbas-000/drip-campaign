@@ -23,14 +23,14 @@
       }
     },
     {
-	  "name": "AtRisk",
-	  "conditions": {
-		"or": [
-		  { "recency_days": "> 365" },
-		  { "guest_communications.sentiment": "negative" }
-		]
-	  }
-	},
+      "name": "AtRisk",
+      "conditions": {
+        "or": [
+          { "recency_days": "> 365" },
+          { "guest_communications.sentiment": "negative" }
+        ]
+      }
+    },
     {
       "name": "Neutral",
       "conditions": {

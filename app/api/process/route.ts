@@ -1,14 +1,14 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { DripCampaignWorkflow } from '@/lib/workflow';
+import { NextRequest, NextResponse } from "next/server";
+import { DripCampaignWorkflow } from "@/_lib/workflow";
 import {
-  Tones, 
-  OutreachTemplates, 
-  OfferTexts, 
-  AltOfferTexts, 
+  Tones,
+  OutreachTemplates,
+  OfferTexts,
+  AltOfferTexts,
   PromoCodes,
   Property,
-  Season
-} from '@/types';
+  Season,
+} from "@/types";
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,7 +16,10 @@ export async function POST(request: NextRequest) {
     const { seedData } = body;
 
     if (!seedData) {
-      return NextResponse.json({ error: 'Seed data is required' }, { status: 400 });
+      return NextResponse.json(
+        { error: "Seed data is required" },
+        { status: 400 },
+      );
     }
 
     // Load configuration files
@@ -27,15 +30,15 @@ export async function POST(request: NextRequest) {
       templates,
       offerTexts,
       altOfferTexts,
-      promoCodes
+      promoCodes,
     ] = await Promise.all([
-      import('@/public/jsons/segmentation_rules.json'),
-      import('@/public/jsons/str_past_guests_seed_with_segments.json'),
-      import('@/public/jsons/tones.json'),
-      import('@/public/jsons/outreach_templates.json'),
-      import('@/public/jsons/offer_texts.json'),
-      import('@/public/jsons/alt_offer_texts.json'),
-      import('@/public/jsons/promo_codes.json')
+      import("@/public/jsons/segmentation_rules.json"),
+      import("@/public/jsons/str_past_guests_seed_with_segments.json"),
+      import("@/public/jsons/tones.json"),
+      import("@/public/jsons/outreach_templates.json"),
+      import("@/public/jsons/offer_texts.json"),
+      import("@/public/jsons/alt_offer_texts.json"),
+      import("@/public/jsons/promo_codes.json"),
     ]);
 
     // Initialize workflow
@@ -45,7 +48,7 @@ export async function POST(request: NextRequest) {
       templates.default as OutreachTemplates,
       offerTexts.default as OfferTexts,
       altOfferTexts.default as AltOfferTexts,
-      promoCodes.default as PromoCodes
+      promoCodes.default as PromoCodes,
     );
 
     // Process guests
@@ -60,15 +63,17 @@ export async function POST(request: NextRequest) {
         totalGuests: seedData.guests.length,
         totalContacts: processedData.contacts.length,
         totalCustomFields: processedData.customFields.length,
-        totalActions: processedData.actions.length
-      }
+        totalActions: processedData.actions.length,
+      },
     });
-
   } catch (error) {
-    console.error('Error processing data:', error);
+    console.error("Error processing data:", error);
     return NextResponse.json(
-      { error: 'Failed to process data', details: error instanceof Error ? error.message : 'Unknown error' },
-      { status: 500 }
+      {
+        error: "Failed to process data",
+        details: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 },
     );
   }
 }

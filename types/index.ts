@@ -9,13 +9,13 @@ export interface Property {
 
 export interface Season {
   month: number;
-  label: 'Low' | 'Shoulder' | 'Peak';
+  label: "Low" | "Shoulder" | "Peak";
   notes: string;
 }
 
 export interface GuestCommunication {
-  channel: 'email' | 'sms';
-  sentiment: 'positive' | 'neutral' | 'negative';
+  channel: "email" | "sms";
+  sentiment: "positive" | "neutral" | "negative";
   content: string;
   timestamp: string;
   stage: string;
@@ -132,7 +132,7 @@ export interface Action {
   guest_id: string;
   outreach: string;
   send_date: string;
-  channel: 'email' | 'sms' | 'email + sms';
+  channel: "email" | "sms" | "email + sms";
   template_id: string;
   dedupeKey: string;
   subject?: string;

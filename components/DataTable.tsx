@@ -1,11 +1,17 @@
-'use client';
+"use client";
 
-import { useState, useMemo } from 'react';
-import { FilterOptions, Contact, CustomField, Action, MainProcessedData } from '@/types';
+import { useState, useMemo } from "react";
+import {
+  FilterOptions,
+  Contact,
+  CustomField,
+  Action,
+  MainProcessedData,
+} from "@/types";
 
 interface DataTableProps {
   data: MainProcessedData;
-  activeTab: 'contacts' | 'customFields' | 'actions';
+  activeTab: "contacts" | "customFields" | "actions";
   filters: FilterOptions;
 }
 
@@ -19,46 +25,60 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
     let filtered: any[] = [];
 
     switch (activeTab) {
-      case 'contacts':
+      case "contacts":
         filtered = data.contacts;
         break;
-      case 'customFields':
+      case "customFields":
         filtered = data.customFields;
         break;
-      case 'actions':
+      case "actions":
         filtered = data.actions;
         break;
     }
 
     // Apply filters
     if (filters.segment) {
-      filtered = filtered.filter((item: any) => item.segment === filters.segment);
+      filtered = filtered.filter(
+        (item: any) => item.segment === filters.segment,
+      );
     }
 
     if (filters.consentEmail !== undefined) {
-      filtered = filtered.filter((item: any) => item.consent_email === filters.consentEmail);
+      filtered = filtered.filter(
+        (item: any) => item.consent_email === filters.consentEmail,
+      );
     }
 
     if (filters.consentSms !== undefined) {
-      filtered = filtered.filter((item: any) => item.consent_sms === filters.consentSms);
+      filtered = filtered.filter(
+        (item: any) => item.consent_sms === filters.consentSms,
+      );
     }
 
     if (filters.lastProperty) {
-      filtered = filtered.filter((item: any) => item.last_property === filters.lastProperty);
+      filtered = filtered.filter(
+        (item: any) => item.last_property === filters.lastProperty,
+      );
     }
 
     if (filters.recencyRange) {
       if (filters.recencyRange.min !== undefined) {
-        filtered = filtered.filter((item: any) => item.recency_days >= filters.recencyRange!.min!);
+        filtered = filtered.filter(
+          (item: any) => item.recency_days >= filters.recencyRange!.min!,
+        );
       }
       if (filters.recencyRange.max !== undefined) {
-        filtered = filtered.filter((item: any) => item.recency_days <= filters.recencyRange!.max!);
+        filtered = filtered.filter(
+          (item: any) => item.recency_days <= filters.recencyRange!.max!,
+        );
       }
     }
 
     if (filters.monthOfStay) {
       filtered = filtered.filter((item: any) => {
-        const month = new Date(item.last_check_in).toLocaleString('default', { month: 'long' });
+        const month = new Date(item.last_check_in).toLocaleString("default", {
+          month: "long",
+        });
         return month === filters.monthOfStay;
       });
     }
@@ -86,7 +106,11 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
     if (selectedRows.size === currentData.length) {
       setSelectedRows(new Set());
     } else {
-      setSelectedRows(new Set(currentData.map((item: any) => item.guest_id || item.dedupeKey)));
+      setSelectedRows(
+        new Set(
+          currentData.map((item: any) => item.guest_id || item.dedupeKey),
+        ),
+      );
     }
   };
 
@@ -98,7 +122,10 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               <input
                 type="checkbox"
-                checked={selectedRows.size === currentData.length && currentData.length > 0}
+                checked={
+                  selectedRows.size === currentData.length &&
+                  currentData.length > 0
+                }
                 onChange={handleSelectAll}
                 className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
               />
@@ -155,7 +182,10 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               <input
                 type="checkbox"
-                checked={selectedRows.size === currentData.length && currentData.length > 0}
+                checked={
+                  selectedRows.size === currentData.length &&
+                  currentData.length > 0
+                }
                 onChange={handleSelectAll}
                 className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
               />
@@ -195,13 +225,19 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
                 {field.guest_id}
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                  field.segment === 'Promoter_VIP' ? 'bg-purple-100 text-purple-800' :
-                  field.segment === 'Promoter' ? 'bg-green-100 text-green-800' :
-                  field.segment === 'HighValue_Recent' ? 'bg-blue-100 text-blue-800' :
-                  field.segment === 'AtRisk' ? 'bg-red-100 text-red-800' :
-                  'bg-gray-100 text-gray-800'
-                }`}>
+                <span
+                  className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                    field.segment === "Promoter_VIP"
+                      ? "bg-purple-100 text-purple-800"
+                      : field.segment === "Promoter"
+                        ? "bg-green-100 text-green-800"
+                        : field.segment === "HighValue_Recent"
+                          ? "bg-blue-100 text-blue-800"
+                          : field.segment === "AtRisk"
+                            ? "bg-red-100 text-red-800"
+                            : "bg-gray-100 text-gray-800"
+                  }`}
+                >
                   {field.segment}
                 </span>
               </td>
@@ -243,7 +279,10 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               <input
                 type="checkbox"
-                checked={selectedRows.size === currentData.length && currentData.length > 0}
+                checked={
+                  selectedRows.size === currentData.length &&
+                  currentData.length > 0
+                }
                 onChange={handleSelectAll}
                 className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
               />
@@ -286,9 +325,15 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
                 {action.outreach}
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                  action.channel === 'email + sms' ? 'bg-purple-100 text-purple-800' : action.channel === 'email' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'
-                }`}>
+                <span
+                  className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                    action.channel === "email + sms"
+                      ? "bg-purple-100 text-purple-800"
+                      : action.channel === "email"
+                        ? "bg-green-100 text-green-800"
+                        : "bg-blue-100 text-blue-800"
+                  }`}
+                >
                   {action.channel.toUpperCase()}
                 </span>
               </td>
@@ -299,7 +344,7 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
                 {action.subject || action.body || action.sms_body}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {action.promo_code || '-'}
+                {action.promo_code || "-"}
               </td>
             </tr>
           ))}
@@ -311,15 +356,17 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
   return (
     <div>
       {/* Table */}
-      {activeTab === 'contacts' && renderContactsTable()}
-      {activeTab === 'customFields' && renderCustomFieldsTable()}
-      {activeTab === 'actions' && renderActionsTable()}
+      {activeTab === "contacts" && renderContactsTable()}
+      {activeTab === "customFields" && renderCustomFieldsTable()}
+      {activeTab === "actions" && renderActionsTable()}
 
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex items-center justify-between mt-4">
           <div className="text-sm text-gray-700">
-            Showing {startIndex + 1} to {Math.min(endIndex, filteredData.length)} of {filteredData.length} results
+            Showing {startIndex + 1} to{" "}
+            {Math.min(endIndex, filteredData.length)} of {filteredData.length}{" "}
+            results
           </div>
           <div className="flex space-x-2">
             <button
@@ -333,7 +380,9 @@ export function DataTable({ data, activeTab, filters }: DataTableProps) {
               Page {currentPage} of {totalPages}
             </span>
             <button
-              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+              onClick={() =>
+                setCurrentPage(Math.min(totalPages, currentPage + 1))
+              }
               disabled={currentPage === totalPages}
               className="px-3 py-1 text-sm border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
             >
